@@ -21,6 +21,18 @@ export const bundledThemesInfo: BundledThemeInfo[] = [
     "import": (() => import('@shikijs/themes/ayu-dark')) as unknown as DynamicImportThemeRegistration
   },
   {
+    "id": "ayu-light",
+    "displayName": "Ayu Light",
+    "type": "light",
+    "import": (() => import('@shikijs/themes/ayu-light')) as unknown as DynamicImportThemeRegistration
+  },
+  {
+    "id": "ayu-mirage",
+    "displayName": "Ayu Mirage",
+    "type": "dark",
+    "import": (() => import('@shikijs/themes/ayu-mirage')) as unknown as DynamicImportThemeRegistration
+  },
+  {
     "id": "catppuccin-frappe",
     "displayName": "Catppuccin Frappé",
     "type": "dark",
@@ -153,6 +165,18 @@ export const bundledThemesInfo: BundledThemeInfo[] = [
     "import": (() => import('@shikijs/themes/gruvbox-light-soft')) as unknown as DynamicImportThemeRegistration
   },
   {
+    "id": "horizon",
+    "displayName": "Horizon",
+    "type": "dark",
+    "import": (() => import('@shikijs/themes/horizon')) as unknown as DynamicImportThemeRegistration
+  },
+  {
+    "id": "horizon-bright",
+    "displayName": "Horizon Bright",
+    "type": "light",
+    "import": (() => import('@shikijs/themes/horizon-bright')) as unknown as DynamicImportThemeRegistration
+  },
+  {
     "id": "houston",
     "displayName": "Houston",
     "type": "dark",
@@ -241,6 +265,12 @@ export const bundledThemesInfo: BundledThemeInfo[] = [
     "displayName": "Night Owl",
     "type": "dark",
     "import": (() => import('@shikijs/themes/night-owl')) as unknown as DynamicImportThemeRegistration
+  },
+  {
+    "id": "night-owl-light",
+    "displayName": "Night Owl Light",
+    "type": "light",
+    "import": (() => import('@shikijs/themes/night-owl-light')) as unknown as DynamicImportThemeRegistration
   },
   {
     "id": "nord",
@@ -368,6 +398,8 @@ export type BundledTheme =
   | 'andromeeda'
   | 'aurora-x'
   | 'ayu-dark'
+  | 'ayu-light'
+  | 'ayu-mirage'
   | 'catppuccin-frappe'
   | 'catppuccin-latte'
   | 'catppuccin-macchiato'
@@ -390,6 +422,8 @@ export type BundledTheme =
   | 'gruvbox-light-hard'
   | 'gruvbox-light-medium'
   | 'gruvbox-light-soft'
+  | 'horizon'
+  | 'horizon-bright'
   | 'houston'
   | 'kanagawa-dragon'
   | 'kanagawa-lotus'
@@ -405,6 +439,7 @@ export type BundledTheme =
   | 'min-light'
   | 'monokai'
   | 'night-owl'
+  | 'night-owl-light'
   | 'nord'
   | 'one-dark-pro'
   | 'one-light'

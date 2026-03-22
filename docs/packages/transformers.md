@@ -298,18 +298,20 @@ console.log('Not focused')
 
 ### `transformerNotationErrorLevel`
 
-Use `[!code error]` and `[!code warning]` to mark a line with an error and warning levels.
+Use `[!code error]`, `[!code warning]`, and `[!code info]` to mark a line with an error, warning, or info levels.
 
 ````md
 ```ts
 console.log('No errors or warnings')
 console.error('Error') // [\!code error]
 console.warn('Warning') // [\!code warning]
+console.log('Info') // [\!code info]
 ```
 ````
 
 - Outputs: `<span class="line highlighted error">` for errors
 - Outputs: `<span class="line highlighted warning">` for warnings
+- Outputs: `<span class="line highlighted info">` for info
 - The outer `<pre>` tag is modified: `<pre class="has-highlighted">`
 
 With some additional CSS rules, you can make it look like this:
@@ -318,6 +320,7 @@ With some additional CSS rules, you can make it look like this:
 console.log('No errors or warnings')
 console.error('Error') // [!code error]
 console.warn('Warning') // [!code warning]
+console.log('Info') // [!code info]
 ```
 
 ---
@@ -325,6 +328,10 @@ console.warn('Warning') // [!code warning]
 ### `transformerRenderWhitespace`
 
 Render whitespaces (tabs and spaces) as individual spans, with classes `tab` and `space`.
+
+Options:
+
+- `position`: `'all' | 'boundary' | 'trailing' | 'leading'`. Default `'all'`.
 
 With some additional CSS rules, you can make it look like this:
 

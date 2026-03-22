@@ -2,6 +2,8 @@ import type { ShikiTransformer } from '@shikijs/types'
 import type { Element } from 'hast'
 import { splitSpaces } from '../shared/utils'
 
+const RE_SPACE_OR_TAB = /([ \t])/
+
 export interface TransformerRenderWhitespaceOptions {
   /**
    * Class for tab
@@ -20,7 +22,7 @@ export interface TransformerRenderWhitespaceOptions {
    * Position of rendered whitespace
    * @default all position
    */
-  position?: 'all' | 'boundary' | 'trailing'
+  position?: 'all' | 'boundary' | 'trailing' | 'leading'
 }
 
 /**
@@ -57,6 +59,8 @@ export function transformerRenderWhitespace(
             return token
           if (position === 'trailing' && index !== last)
             return token
+          if (position === 'leading' && index !== 0)
+            return token
 
           const node = token.children[0]
           if (node.type !== 'text' || !node.value)
@@ -64,11 +68,11 @@ export function transformerRenderWhitespace(
 
           // Split by whitespaces
           const parts = splitSpaces(
-            node.value.split(/([ \t])/).filter(i => i.length),
+            node.value.split(RE_SPACE_OR_TAB).filter(i => i.length),
             (position === 'boundary' && index === last && last !== 0)
               ? 'trailing'
               : position,
-            position !== 'trailing',
+            position !== 'trailing' && position !== 'leading',
           )
           if (parts.length <= 1)
             return token

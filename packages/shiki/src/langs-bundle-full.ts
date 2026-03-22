@@ -112,6 +112,14 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
     'import': (() => import('@shikijs/langs/bicep')) as DynamicImportLanguageRegistration
   },
   {
+    'id': 'bird2',
+    'name': 'BIRD2 Configuration',
+    'aliases': [
+      'bird'
+    ],
+    'import': (() => import('@shikijs/langs/bird2')) as DynamicImportLanguageRegistration
+  },
+  {
     'id': 'blade',
     'name': 'Blade',
     'import': (() => import('@shikijs/langs/blade')) as DynamicImportLanguageRegistration
@@ -128,6 +136,11 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
     'id': 'c',
     'name': 'C',
     'import': (() => import('@shikijs/langs/c')) as DynamicImportLanguageRegistration
+  },
+  {
+    'id': 'c3',
+    'name': 'C3',
+    'import': (() => import('@shikijs/langs/c3')) as DynamicImportLanguageRegistration
   },
   {
     'id': 'cadence',
@@ -375,11 +388,18 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
   {
     'id': 'gdresource',
     'name': 'GDResource',
+    'aliases': [
+      'tscn',
+      'tres'
+    ],
     'import': (() => import('@shikijs/langs/gdresource')) as DynamicImportLanguageRegistration
   },
   {
     'id': 'gdscript',
     'name': 'GDScript',
+    'aliases': [
+      'gd'
+    ],
     'import': (() => import('@shikijs/langs/gdscript')) as DynamicImportLanguageRegistration
   },
   {
@@ -432,6 +452,11 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
     'id': 'glsl',
     'name': 'GLSL',
     'import': (() => import('@shikijs/langs/glsl')) as DynamicImportLanguageRegistration
+  },
+  {
+    'id': 'gn',
+    'name': 'GN',
+    'import': (() => import('@shikijs/langs/gn')) as DynamicImportLanguageRegistration
   },
   {
     'id': 'gnuplot',
@@ -617,6 +642,11 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
     'import': (() => import('@shikijs/langs/julia')) as DynamicImportLanguageRegistration
   },
   {
+    'id': 'just',
+    'name': 'Just',
+    'import': (() => import('@shikijs/langs/just')) as DynamicImportLanguageRegistration
+  },
+  {
     'id': 'kdl',
     'name': 'KDL',
     'import': (() => import('@shikijs/langs/kdl')) as DynamicImportLanguageRegistration
@@ -744,6 +774,15 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
     'import': (() => import('@shikijs/langs/mojo')) as DynamicImportLanguageRegistration
   },
   {
+    'id': 'moonbit',
+    'name': 'MoonBit',
+    'aliases': [
+      'mbt',
+      'mbti'
+    ],
+    'import': (() => import('@shikijs/langs/moonbit')) as DynamicImportLanguageRegistration
+  },
+  {
     'id': 'move',
     'name': 'Move',
     'import': (() => import('@shikijs/langs/move')) as DynamicImportLanguageRegistration
@@ -763,6 +802,11 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
       'nf'
     ],
     'import': (() => import('@shikijs/langs/nextflow')) as DynamicImportLanguageRegistration
+  },
+  {
+    'id': 'nextflow-groovy',
+    'name': 'Nextflow Groovy',
+    'import': (() => import('@shikijs/langs/nextflow-groovy')) as DynamicImportLanguageRegistration
   },
   {
     'id': 'nginx',
@@ -804,6 +848,11 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
     'id': 'ocaml',
     'name': 'OCaml',
     'import': (() => import('@shikijs/langs/ocaml')) as DynamicImportLanguageRegistration
+  },
+  {
+    'id': 'odin',
+    'name': 'Odin',
+    'import': (() => import('@shikijs/langs/odin')) as DynamicImportLanguageRegistration
   },
   {
     'id': 'openscad',
@@ -977,6 +1026,11 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
     'import': (() => import('@shikijs/langs/riscv')) as DynamicImportLanguageRegistration
   },
   {
+    'id': 'ron',
+    'name': 'RON',
+    'import': (() => import('@shikijs/langs/ron')) as DynamicImportLanguageRegistration
+  },
+  {
     'id': 'rosmsg',
     'name': 'ROS Interface',
     'import': (() => import('@shikijs/langs/rosmsg')) as DynamicImportLanguageRegistration
@@ -1115,6 +1169,14 @@ export const bundledLanguagesInfo: BundledLanguageInfo[] = [
       'styl'
     ],
     'import': (() => import('@shikijs/langs/stylus')) as DynamicImportLanguageRegistration
+  },
+  {
+    'id': 'surrealql',
+    'name': 'SurrealQL',
+    'aliases': [
+      'surql'
+    ],
+    'import': (() => import('@shikijs/langs/surrealql')) as DynamicImportLanguageRegistration
   },
   {
     'id': 'svelte',
@@ -1393,11 +1455,14 @@ export type BundledLanguage =
   | 'berry'
   | 'bibtex'
   | 'bicep'
+  | 'bird'
+  | 'bird2'
   | 'blade'
   | 'bsl'
   | 'c'
   | 'c#'
   | 'c++'
+  | 'c3'
   | 'cadence'
   | 'cairo'
   | 'cdc'
@@ -1461,6 +1526,7 @@ export type BundledLanguage =
   | 'fsharp'
   | 'fsl'
   | 'ftl'
+  | 'gd'
   | 'gdresource'
   | 'gdscript'
   | 'gdshader'
@@ -1473,6 +1539,7 @@ export type BundledLanguage =
   | 'glimmer-js'
   | 'glimmer-ts'
   | 'glsl'
+  | 'gn'
   | 'gnuplot'
   | 'go'
   | 'gql'
@@ -1512,6 +1579,7 @@ export type BundledLanguage =
   | 'jssm'
   | 'jsx'
   | 'julia'
+  | 'just'
   | 'kdl'
   | 'kotlin'
   | 'kql'
@@ -1535,6 +1603,8 @@ export type BundledLanguage =
   | 'markdown'
   | 'marko'
   | 'matlab'
+  | 'mbt'
+  | 'mbti'
   | 'md'
   | 'mdc'
   | 'mdx'
@@ -1545,11 +1615,13 @@ export type BundledLanguage =
   | 'mjs'
   | 'mmd'
   | 'mojo'
+  | 'moonbit'
   | 'move'
   | 'mts'
   | 'nar'
   | 'narrat'
   | 'nextflow'
+  | 'nextflow-groovy'
   | 'nf'
   | 'nginx'
   | 'nim'
@@ -1560,6 +1632,7 @@ export type BundledLanguage =
   | 'objective-c'
   | 'objective-cpp'
   | 'ocaml'
+  | 'odin'
   | 'openscad'
   | 'pascal'
   | 'perl'
@@ -1600,6 +1673,7 @@ export type BundledLanguage =
   | 'regexp'
   | 'rel'
   | 'riscv'
+  | 'ron'
   | 'rosmsg'
   | 'rs'
   | 'rst'
@@ -1629,6 +1703,8 @@ export type BundledLanguage =
   | 'stata'
   | 'styl'
   | 'stylus'
+  | 'surql'
+  | 'surrealql'
   | 'svelte'
   | 'swift'
   | 'system-verilog'
@@ -1643,8 +1719,10 @@ export type BundledLanguage =
   | 'tf'
   | 'tfvars'
   | 'toml'
+  | 'tres'
   | 'ts'
   | 'ts-tags'
+  | 'tscn'
   | 'tsp'
   | 'tsv'
   | 'tsx'

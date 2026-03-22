@@ -16,7 +16,7 @@ export interface MarkdownFenceSourceMapCodec {
   /**
    * Injects source map data into the markdown source.
    * @param code markdown source
-   * @param injects map of inject positions to source maps
+   * @param path markdown file path
    * @returns markdown source with injected source maps
    */
   injectToMarkdown: (code: string, path: string) => string
@@ -43,7 +43,8 @@ export function createMarkdownFenceSourceCodec(mapper: MarkdownFencesSourceMappe
 
     // start injection, process in descending order to preserve offsets
     let newCode = code
-    const injectAts = Array.from(injects.keys()).sort((a, b) => b - a)
+    // eslint-disable-next-line e18e/prefer-array-to-sorted -- MapIterator doesn't have toSorted()
+    const injectAts = [...injects.keys()].sort((a, b) => b - a)
     for (const at of injectAts) {
       const sourceMap = injects.get(at)!
       const data = stringifyFenceSourceMap(sourceMap)

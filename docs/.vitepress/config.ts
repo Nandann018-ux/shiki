@@ -11,6 +11,10 @@ import { createTwoslashWithInlineCache } from '../../packages/vitepress-twoslash
 import { defaultHoverInfoProcessor } from '../../packages/vitepress-twoslash/src/index'
 import vite from './vite.config'
 
+const RE_SHIKIJS_CORE = /_shikijs_core\w*\./g
+const RE_THEME_META = /\btheme:([\w,-]+)\b/
+const RE_DECORATIONS_META = /^\/\/ @decorations:(.*)\n/
+
 const GUIDES = [
   { text: 'Getting Started', link: '/guide/' },
   { text: 'Installation & Usage', link: '/guide/install' },
@@ -39,6 +43,7 @@ const REFERENCES = [
 const INTEGRATIONS = [
   { text: 'TypeScript Twoslash', link: '/packages/twoslash' },
   { text: 'markdown-it', link: '/packages/markdown-it' },
+  { text: 'markdown-exit', link: '/packages/markdown-exit' },
   { text: 'Rehype', link: '/packages/rehype' },
   { text: 'Monaco Editor', link: '/packages/monaco' },
   { text: 'VitePress', link: '/packages/vitepress' },
@@ -52,6 +57,7 @@ const INTEGRATIONS = [
 ] as const satisfies (DefaultTheme.NavItemWithLink | DefaultTheme.SidebarItem)[]
 
 const BLOGS: DefaultTheme.NavItemWithLink[] = [
+  { text: 'Shiki v4.0', link: '/blog/v4' },
   { text: 'Shiki v3.0', link: '/blog/v3' },
   { text: 'Shiki v2.0', link: '/blog/v2' },
   { text: 'The Evolution of Shiki v1.0', link: 'https://nuxt.com/blog/shiki-v1' },
@@ -63,6 +69,7 @@ const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] 
   { text: `Contributing`, link: 'https://github.com/shikijs/shiki/blob/main/CONTRIBUTING.md' },
   {
     items: [
+      { text: 'Migration from v3.0', link: '/blog/v4' },
       { text: 'Migration from v2.0', link: '/blog/v3' },
       { text: 'Migration from v1.0', link: '/blog/v2' },
       { text: 'Migration from v0.14', link: '/guide/migrate#migrate-from-v0-14' },
@@ -76,7 +83,7 @@ const withTwoslashInlineCache = createTwoslashWithInlineCache({
   processHoverInfo(info) {
     return defaultHoverInfoProcessor(info)
       // Remove shiki_core namespace
-      .replace(/_shikijs_core\w*\./g, '')
+      .replace(RE_SHIKIJS_CORE, '')
   },
 })
 
@@ -101,8 +108,7 @@ export default withTwoslashInlineCache(withMermaid(defineConfig({
         // Render custom themes with codeblocks
         name: 'shiki:inline-theme',
         preprocess(code, options) {
-          const reg = /\btheme:([\w,-]+)\b/
-          const match = options.meta?.__raw?.match(reg)
+          const match = options.meta?.__raw?.match(RE_THEME_META)
           if (!match?.[1])
             return
           const theme = match[1]
@@ -133,8 +139,7 @@ export default withTwoslashInlineCache(withMermaid(defineConfig({
       {
         name: 'shiki:inline-decorations',
         preprocess(code, options) {
-          const reg = /^\/\/ @decorations:(.*)\n/
-          code = code.replace(reg, (match, decorations) => {
+          code = code.replace(RE_DECORATIONS_META, (_match, decorations) => {
             options.decorations ||= []
             options.decorations.push(...JSON.parse(decorations))
             return ''
